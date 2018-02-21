@@ -54,7 +54,9 @@ var nativeTimingSafeEqual = function nativeTimingSafeEqual(a, b) {
     var len = Math.max(Buffer.byteLength(strA), Buffer.byteLength(strB));
     
     var bufA = bufferAlloc(len, strA, 'utf8');
+    bufA.fill(0, Buffer.byteLength(strA));
     var bufB = bufferAlloc(len, strB, 'utf8');
+    bufB.fill(0, Buffer.byteLength(strB));
     
     return crypto.timingSafeEqual(bufA, bufB);
 };
